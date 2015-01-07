@@ -1,0 +1,2 @@
+# openstack needs version >=0.9.7,<=0.9.99
+watchurl=https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-(0.9[\d\.]*).tar.gz
