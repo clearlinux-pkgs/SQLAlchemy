@@ -4,7 +4,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.0.8
-Release  : 12
+Release  : 13
 URL      : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.8.tar.gz
 Source0  : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.8.tar.gz
 Summary  : Database Abstraction Library
