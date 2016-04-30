@@ -4,7 +4,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.0.11
-Release  : 17
+Release  : 18
 URL      : https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-1.0.11.tar.gz
 Source0  : https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-1.0.11.tar.gz
 Summary  : Database Abstraction Library
