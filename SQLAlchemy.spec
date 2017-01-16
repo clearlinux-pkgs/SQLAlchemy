@@ -4,7 +4,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.0.16
-Release  : 28
+Release  : 29
 URL      : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source0  : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Summary  : Database Abstraction Library
@@ -49,6 +49,7 @@ python components for the SQLAlchemy package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484576650
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -58,9 +59,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
 %install
+export SOURCE_DATE_EPOCH=1484576650
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
