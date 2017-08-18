@@ -6,7 +6,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.0.16
-Release  : 32
+Release  : 33
 URL      : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source0  : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source99 : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz.asc
@@ -14,29 +14,34 @@ Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
 Requires: SQLAlchemy-python
-BuildRequires : apipkg-python
-BuildRequires : execnet-python
 BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-BuildRequires : pytest-xdist-python
 BuildRequires : python-dev
 BuildRequires : python-mock
 BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : six
-BuildRequires : six-python
 BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-========================
-Developing new Dialects
-========================
-.. note::
+==========
+        
+        The Python SQL Toolkit and Object Relational Mapper
+        
+        Introduction
+        -------------
+        
+        SQLAlchemy is the Python SQL toolkit and Object Relational Mapper
+        that gives application developers the full power and
+        flexibility of SQL. SQLAlchemy provides a full suite
+        of well known enterprise-level persistence patterns,
+        designed for efficient and high-performing database
+        access, adapted into a simple and Pythonic domain
+        language.
 
 %package python
 Summary: python components for the SQLAlchemy package.
@@ -51,8 +56,11 @@ python components for the SQLAlchemy package.
 %setup -q -n SQLAlchemy-1.0.16
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1487367485
+export SOURCE_DATE_EPOCH=1503081050
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -60,16 +68,20 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1487367485
+export SOURCE_DATE_EPOCH=1503081050
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
