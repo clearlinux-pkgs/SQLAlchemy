@@ -1,3 +1,0 @@
-# openstack Liberty needs version >= 0.9.9 < 1.1.0
-# for more information check https://github.com/openstack/requirements/blob/master/global-requirements.txt
-watchurl=https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-(1.0.[\d\.]*).tar.gz
