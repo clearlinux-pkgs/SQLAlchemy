@@ -6,7 +6,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.0.16
-Release  : 39
+Release  : 40
 URL      : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source0  : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source99 : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz.asc
