@@ -6,7 +6,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.0.16
-Release  : 46
+Release  : 47
 URL      : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source0  : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz
 Source99 : http://pypi.debian.net/SQLAlchemy/SQLAlchemy-1.0.16.tar.gz.asc
@@ -14,6 +14,7 @@ Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
 Requires: SQLAlchemy-python3
+Requires: SQLAlchemy-license
 Requires: SQLAlchemy-python
 BuildRequires : nose
 BuildRequires : pbr
@@ -21,7 +22,6 @@ BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
-
 BuildRequires : python-mock
 BuildRequires : python3-dev
 BuildRequires : setuptools
@@ -43,6 +43,14 @@ BuildRequires : virtualenv
         designed for efficient and high-performing database
         access, adapted into a simple and Pythonic domain
         language.
+
+%package license
+Summary: license components for the SQLAlchemy package.
+Group: Default
+
+%description license
+license components for the SQLAlchemy package.
+
 
 %package python
 Summary: python components for the SQLAlchemy package.
@@ -71,16 +79,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523308310
+export SOURCE_DATE_EPOCH=1530330409
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/SQLAlchemy
+cp LICENSE %{buildroot}/usr/share/doc/SQLAlchemy/LICENSE
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -88,6 +98,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/SQLAlchemy/LICENSE
 
 %files python
 %defattr(-,root,root,-)
