@@ -1,2 +1,5 @@
 # This file contains recursive sources that require this package
+SQLAlchemy-Utils
+alembic
+home-assistant
 ipython-sql

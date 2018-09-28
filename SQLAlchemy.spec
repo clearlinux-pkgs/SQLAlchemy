@@ -5,17 +5,17 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.2.11
-Release  : 54
-URL      : https://files.pythonhosted.org/packages/aa/cc/348eec885d81f7260b07d961b3ececfc0aa82f7d4a8f45ff997e0d3f44ba/SQLAlchemy-1.2.11.tar.gz
-Source0  : https://files.pythonhosted.org/packages/aa/cc/348eec885d81f7260b07d961b3ececfc0aa82f7d4a8f45ff997e0d3f44ba/SQLAlchemy-1.2.11.tar.gz
-Source99 : https://files.pythonhosted.org/packages/aa/cc/348eec885d81f7260b07d961b3ececfc0aa82f7d4a8f45ff997e0d3f44ba/SQLAlchemy-1.2.11.tar.gz.asc
+Version  : 1.2.12
+Release  : 55
+URL      : https://files.pythonhosted.org/packages/25/c9/b0552098cee325425a61efdf380c51b5c721e459081c85bbb860f501c091/SQLAlchemy-1.2.12.tar.gz
+Source0  : https://files.pythonhosted.org/packages/25/c9/b0552098cee325425a61efdf380c51b5c721e459081c85bbb860f501c091/SQLAlchemy-1.2.12.tar.gz
+Source99 : https://files.pythonhosted.org/packages/25/c9/b0552098cee325425a61efdf380c51b5c721e459081c85bbb860f501c091/SQLAlchemy-1.2.12.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
-Requires: SQLAlchemy-python3
-Requires: SQLAlchemy-license
-Requires: SQLAlchemy-python
+Requires: SQLAlchemy-license = %{version}-%{release}
+Requires: SQLAlchemy-python = %{version}-%{release}
+Requires: SQLAlchemy-python3 = %{version}-%{release}
 Requires: psycopg2
 BuildRequires : buildreq-distutils3
 BuildRequires : nose
@@ -53,7 +53,7 @@ license components for the SQLAlchemy package.
 %package python
 Summary: python components for the SQLAlchemy package.
 Group: Default
-Requires: SQLAlchemy-python3
+Requires: SQLAlchemy-python3 = %{version}-%{release}
 Provides: sqlalchemy-python
 
 %description python
@@ -70,14 +70,14 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.2.11
+%setup -q -n SQLAlchemy-1.2.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1534813606
+export SOURCE_DATE_EPOCH=1538143937
 python3 setup.py build -b py3
 
 %check
@@ -87,8 +87,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/SQLAlchemy
-cp LICENSE %{buildroot}/usr/share/doc/SQLAlchemy/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
+cp LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/LICENSE
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -99,7 +99,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(-,root,root,-)
-/usr/share/doc/SQLAlchemy/LICENSE
+/usr/share/package-licenses/SQLAlchemy/LICENSE
 
 %files python
 %defattr(-,root,root,-)
