@@ -6,7 +6,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.2.17
-Release  : 63
+Release  : 64
 URL      : https://files.pythonhosted.org/packages/c6/52/73d1c92944cd294a5b165097038418abb6a235f5956d43d06f97254f73bf/SQLAlchemy-1.2.17.tar.gz
 Source0  : https://files.pythonhosted.org/packages/c6/52/73d1c92944cd294a5b165097038418abb6a235f5956d43d06f97254f73bf/SQLAlchemy-1.2.17.tar.gz
 Source99 : https://files.pythonhosted.org/packages/c6/52/73d1c92944cd294a5b165097038418abb6a235f5956d43d06f97254f73bf/SQLAlchemy-1.2.17.tar.gz.asc
@@ -25,6 +25,8 @@ BuildRequires : pytest
 BuildRequires : python-mock
 BuildRequires : tox
 BuildRequires : virtualenv
+
+Patch1: CVE-2019-7548.patch
 
 %description
 SQLAlchemy
@@ -62,6 +64,9 @@ python3 components for the SQLAlchemy package.
 
 %prep
 %setup -q -n SQLAlchemy-1.2.17
+
+%patch1 -p1
+
 
 %build
 export http_proxy=http://127.0.0.1:9/
