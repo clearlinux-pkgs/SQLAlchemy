@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.2.17
-Release  : 64
-URL      : https://files.pythonhosted.org/packages/c6/52/73d1c92944cd294a5b165097038418abb6a235f5956d43d06f97254f73bf/SQLAlchemy-1.2.17.tar.gz
-Source0  : https://files.pythonhosted.org/packages/c6/52/73d1c92944cd294a5b165097038418abb6a235f5956d43d06f97254f73bf/SQLAlchemy-1.2.17.tar.gz
-Source99 : https://files.pythonhosted.org/packages/c6/52/73d1c92944cd294a5b165097038418abb6a235f5956d43d06f97254f73bf/SQLAlchemy-1.2.17.tar.gz.asc
+Version  : 1.2.18
+Release  : 65
+URL      : https://files.pythonhosted.org/packages/21/ed/7eb53305b43ca51774a458d7c292f3bc7664d7a9bbb5bac4149fa34756b9/SQLAlchemy-1.2.18.tar.gz
+Source0  : https://files.pythonhosted.org/packages/21/ed/7eb53305b43ca51774a458d7c292f3bc7664d7a9bbb5bac4149fa34756b9/SQLAlchemy-1.2.18.tar.gz
+Source99 : https://files.pythonhosted.org/packages/21/ed/7eb53305b43ca51774a458d7c292f3bc7664d7a9bbb5bac4149fa34756b9/SQLAlchemy-1.2.18.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -25,8 +25,6 @@ BuildRequires : pytest
 BuildRequires : python-mock
 BuildRequires : tox
 BuildRequires : virtualenv
-
-Patch1: CVE-2019-7548.patch
 
 %description
 SQLAlchemy
@@ -63,17 +61,14 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.2.17
-
-%patch1 -p1
-
+%setup -q -n SQLAlchemy-1.2.18
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548513623
+export SOURCE_DATE_EPOCH=1550338339
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
