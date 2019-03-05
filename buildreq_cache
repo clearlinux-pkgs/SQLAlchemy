@@ -1,0 +1,5 @@
+1.3.0
+apipkg-python
+execnet-python
+pytest-forked-python
+pytest-xdist-python
