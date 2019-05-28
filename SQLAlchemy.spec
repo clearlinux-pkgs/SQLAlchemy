@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.3
-Release  : 69
-URL      : https://files.pythonhosted.org/packages/2b/b2/e6f5c5efc68942edefaa924e8fbea0b32375baa434a511cbf6bb17769cf6/SQLAlchemy-1.3.3.tar.gz
-Source0  : https://files.pythonhosted.org/packages/2b/b2/e6f5c5efc68942edefaa924e8fbea0b32375baa434a511cbf6bb17769cf6/SQLAlchemy-1.3.3.tar.gz
-Source99 : https://files.pythonhosted.org/packages/2b/b2/e6f5c5efc68942edefaa924e8fbea0b32375baa434a511cbf6bb17769cf6/SQLAlchemy-1.3.3.tar.gz.asc
+Version  : 1.3.4
+Release  : 70
+URL      : https://files.pythonhosted.org/packages/ba/37/094ecf4b218f20572986dc90fe8c6aed32e2a711bcd02ce8ef251fde2011/SQLAlchemy-1.3.4.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ba/37/094ecf4b218f20572986dc90fe8c6aed32e2a711bcd02ce8ef251fde2011/SQLAlchemy-1.3.4.tar.gz
+Source99 : https://files.pythonhosted.org/packages/ba/37/094ecf4b218f20572986dc90fe8c6aed32e2a711bcd02ce8ef251fde2011/SQLAlchemy-1.3.4.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -22,6 +22,7 @@ BuildRequires : buildreq-distutils3
 BuildRequires : execnet-python
 BuildRequires : nose
 BuildRequires : pluggy
+BuildRequires : psycopg2
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : pytest-forked-python
@@ -31,20 +32,11 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
+SQLAlchemy
 ==========
-        
-        The Python SQL Toolkit and Object Relational Mapper
-        
-        Introduction
-        -------------
-        
-        SQLAlchemy is the Python SQL toolkit and Object Relational Mapper
-        that gives application developers the full power and
-        flexibility of SQL. SQLAlchemy provides a full suite
-        of well known enterprise-level persistence patterns,
-        designed for efficient and high-performing database
-        access, adapted into a simple and Pythonic domain
-        language.
+The Python SQL Toolkit and Object Relational Mapper
+Introduction
+-------------
 
 %package license
 Summary: license components for the SQLAlchemy package.
@@ -74,15 +66,18 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.3
+%setup -q -n SQLAlchemy-1.3.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555369861
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1559030955
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

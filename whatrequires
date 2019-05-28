@@ -1,5 +1,7 @@
 # This file contains recursive sources that require this package
 SQLAlchemy-Utils
 alembic
+barbican
 home-assistant
 ipython-sql
+taskflow
