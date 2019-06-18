@@ -2,6 +2,13 @@
 SQLAlchemy-Utils
 alembic
 barbican
+cinder
+glance
 home-assistant
 ipython-sql
+ironic
+kombu
+neutron
+neutron-lib
+nova
 taskflow
