@@ -5,14 +5,15 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.5
-Release  : 72
-URL      : https://files.pythonhosted.org/packages/62/3c/9dda60fd99dbdcbc6312c799a3ec9a261f95bc12f2874a35818f04db2dd9/SQLAlchemy-1.3.5.tar.gz
-Source0  : https://files.pythonhosted.org/packages/62/3c/9dda60fd99dbdcbc6312c799a3ec9a261f95bc12f2874a35818f04db2dd9/SQLAlchemy-1.3.5.tar.gz
-Source99 : https://files.pythonhosted.org/packages/62/3c/9dda60fd99dbdcbc6312c799a3ec9a261f95bc12f2874a35818f04db2dd9/SQLAlchemy-1.3.5.tar.gz.asc
+Version  : 1.3.6
+Release  : 73
+URL      : https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz
+Source0  : https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz
+Source99 : https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
+Requires: SQLAlchemy-license = %{version}-%{release}
 Requires: SQLAlchemy-python = %{version}-%{release}
 Requires: SQLAlchemy-python3 = %{version}-%{release}
 Requires: psycopg2
@@ -37,6 +38,14 @@ The Python SQL Toolkit and Object Relational Mapper
 Introduction
 -------------
 
+%package license
+Summary: license components for the SQLAlchemy package.
+Group: Default
+
+%description license
+license components for the SQLAlchemy package.
+
+
 %package python
 Summary: python components for the SQLAlchemy package.
 Group: Default
@@ -57,14 +66,14 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.5
+%setup -q -n SQLAlchemy-1.3.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560880639
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1563893763
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -81,6 +90,8 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
+cp LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/LICENSE
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -88,6 +99,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/SQLAlchemy/LICENSE
 
 %files python
 %defattr(-,root,root,-)
