@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.6
-Release  : 73
-URL      : https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz
-Source0  : https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz
-Source99 : https://files.pythonhosted.org/packages/55/98/56b7155bab287cd0c78dee26258835db36e91f2efef41f125ed6f6f1f334/SQLAlchemy-1.3.6.tar.gz.asc
+Version  : 1.3.7
+Release  : 74
+URL      : https://files.pythonhosted.org/packages/c2/75/6217c626fa22ad56ae5ccb1a36e7c4f17f5ca31543887e00179468d10464/SQLAlchemy-1.3.7.tar.gz
+Source0  : https://files.pythonhosted.org/packages/c2/75/6217c626fa22ad56ae5ccb1a36e7c4f17f5ca31543887e00179468d10464/SQLAlchemy-1.3.7.tar.gz
+Source1 : https://files.pythonhosted.org/packages/c2/75/6217c626fa22ad56ae5ccb1a36e7c4f17f5ca31543887e00179468d10464/SQLAlchemy-1.3.7.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -66,14 +66,15 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.6
+%setup -q -n SQLAlchemy-1.3.7
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563893763
+export SOURCE_DATE_EPOCH=1565920692
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "

@@ -7,8 +7,10 @@ glance
 home-assistant
 ipython-sql
 ironic
+keystone
 kombu
 neutron
 neutron-lib
 nova
+sahara
 taskflow
