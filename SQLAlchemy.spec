@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.10
-Release  : 77
-URL      : https://files.pythonhosted.org/packages/14/0e/487f7fc1e432cec50d2678f94e4133f2b9e9356e35bacc30d73e8cb831fc/SQLAlchemy-1.3.10.tar.gz
-Source0  : https://files.pythonhosted.org/packages/14/0e/487f7fc1e432cec50d2678f94e4133f2b9e9356e35bacc30d73e8cb831fc/SQLAlchemy-1.3.10.tar.gz
-Source1 : https://files.pythonhosted.org/packages/14/0e/487f7fc1e432cec50d2678f94e4133f2b9e9356e35bacc30d73e8cb831fc/SQLAlchemy-1.3.10.tar.gz.asc
+Version  : 1.3.11
+Release  : 78
+URL      : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz
+Source0  : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz
+Source1 : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -66,14 +66,14 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.10
+%setup -q -n SQLAlchemy-1.3.11
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570785192
+export SOURCE_DATE_EPOCH=1573528551
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -92,7 +92,7 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
-cp LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/LICENSE
+cp %{_builddir}/SQLAlchemy-1.3.11/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/a5889c8fe0d13cda9cceba822820669606d570b6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -103,7 +103,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/SQLAlchemy/LICENSE
+/usr/share/package-licenses/SQLAlchemy/a5889c8fe0d13cda9cceba822820669606d570b6
 
 %files python
 %defattr(-,root,root,-)
