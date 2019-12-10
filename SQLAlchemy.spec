@@ -6,10 +6,10 @@
 #
 Name     : SQLAlchemy
 Version  : 1.3.11
-Release  : 79
+Release  : 80
 URL      : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz
 Source0  : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz
-Source1 : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz.asc
+Source1  : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -32,11 +32,20 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-SQLAlchemy
 ==========
-The Python SQL Toolkit and Object Relational Mapper
-Introduction
--------------
+        
+        The Python SQL Toolkit and Object Relational Mapper
+        
+        Introduction
+        -------------
+        
+        SQLAlchemy is the Python SQL toolkit and Object Relational Mapper
+        that gives application developers the full power and
+        flexibility of SQL. SQLAlchemy provides a full suite
+        of well known enterprise-level persistence patterns,
+        designed for efficient and high-performing database
+        access, adapted into a simple and Pythonic domain
+        language.
 
 %package license
 Summary: license components for the SQLAlchemy package.
@@ -67,14 +76,14 @@ python3 components for the SQLAlchemy package.
 
 %prep
 %setup -q -n SQLAlchemy-1.3.11
+cd %{_builddir}/SQLAlchemy-1.3.11
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573528551
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576016491
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -87,7 +96,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
