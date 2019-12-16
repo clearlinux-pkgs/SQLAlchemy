@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.11
-Release  : 80
-URL      : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz
-Source0  : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz
-Source1  : https://files.pythonhosted.org/packages/34/5c/0e1d7ad0ca52544bb12f9cb8d5cc454af45821c92160ffedd38db0a317f6/SQLAlchemy-1.3.11.tar.gz.asc
+Version  : 1.3.12
+Release  : 81
+URL      : https://files.pythonhosted.org/packages/17/7f/35879c73859368ad19a952b69ee780aa97fc30350dabd45fb948d6a4e3ea/SQLAlchemy-1.3.12.tar.gz
+Source0  : https://files.pythonhosted.org/packages/17/7f/35879c73859368ad19a952b69ee780aa97fc30350dabd45fb948d6a4e3ea/SQLAlchemy-1.3.12.tar.gz
+Source1  : https://files.pythonhosted.org/packages/17/7f/35879c73859368ad19a952b69ee780aa97fc30350dabd45fb948d6a4e3ea/SQLAlchemy-1.3.12.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -32,20 +32,11 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
+SQLAlchemy
 ==========
-        
-        The Python SQL Toolkit and Object Relational Mapper
-        
-        Introduction
-        -------------
-        
-        SQLAlchemy is the Python SQL toolkit and Object Relational Mapper
-        that gives application developers the full power and
-        flexibility of SQL. SQLAlchemy provides a full suite
-        of well known enterprise-level persistence patterns,
-        designed for efficient and high-performing database
-        access, adapted into a simple and Pythonic domain
-        language.
+The Python SQL Toolkit and Object Relational Mapper
+Introduction
+-------------
 
 %package license
 Summary: license components for the SQLAlchemy package.
@@ -75,15 +66,16 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.11
-cd %{_builddir}/SQLAlchemy-1.3.11
+%setup -q -n SQLAlchemy-1.3.12
+cd %{_builddir}/SQLAlchemy-1.3.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576016491
+export SOURCE_DATE_EPOCH=1576535909
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -101,7 +93,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
-cp %{_builddir}/SQLAlchemy-1.3.11/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/a5889c8fe0d13cda9cceba822820669606d570b6
+cp %{_builddir}/SQLAlchemy-1.3.12/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/a5889c8fe0d13cda9cceba822820669606d570b6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
