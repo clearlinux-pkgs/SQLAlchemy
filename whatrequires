@@ -4,6 +4,7 @@ alembic
 barbican
 cinder
 glance
+heat
 home-assistant
 ipython-sql
 ironic
@@ -12,6 +13,7 @@ kombu
 neutron
 neutron-lib
 nova
+performance
 sahara
 sqlalchemy-migrate
 subunit2sql
