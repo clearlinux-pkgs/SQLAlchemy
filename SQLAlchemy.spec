@@ -5,46 +5,44 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.13
-Release  : 85
-URL      : https://files.pythonhosted.org/packages/af/47/35edeb0f86c0b44934c05d961c893e223ef27e79e1f53b5e6f14820ff553/SQLAlchemy-1.3.13.tar.gz
-Source0  : https://files.pythonhosted.org/packages/af/47/35edeb0f86c0b44934c05d961c893e223ef27e79e1f53b5e6f14820ff553/SQLAlchemy-1.3.13.tar.gz
-Source1  : https://files.pythonhosted.org/packages/af/47/35edeb0f86c0b44934c05d961c893e223ef27e79e1f53b5e6f14820ff553/SQLAlchemy-1.3.13.tar.gz.asc
+Version  : 1.3.14
+Release  : 86
+URL      : https://files.pythonhosted.org/packages/f5/d8/3cc1c814b29c6ac667200e19e9cf1879479f6ad561595fa313bcd99f3e0f/SQLAlchemy-1.3.14.tar.gz
+Source0  : https://files.pythonhosted.org/packages/f5/d8/3cc1c814b29c6ac667200e19e9cf1879479f6ad561595fa313bcd99f3e0f/SQLAlchemy-1.3.14.tar.gz
+Source1  : https://files.pythonhosted.org/packages/f5/d8/3cc1c814b29c6ac667200e19e9cf1879479f6ad561595fa313bcd99f3e0f/SQLAlchemy-1.3.14.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
+Requires: SQLAlchemy-license = %{version}-%{release}
 Requires: SQLAlchemy-python = %{version}-%{release}
 Requires: SQLAlchemy-python3 = %{version}-%{release}
 Requires: psycopg2
 BuildRequires : apipkg-python
 BuildRequires : buildreq-distutils3
-BuildRequires : execnet-python
 BuildRequires : nose
 BuildRequires : pluggy
 BuildRequires : psycopg2
 BuildRequires : py-python
 BuildRequires : pytest
-BuildRequires : pytest-forked-python
 BuildRequires : pytest-xdist-python
 BuildRequires : python-mock
 BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
+SQLAlchemy
 ==========
-        
-        The Python SQL Toolkit and Object Relational Mapper
-        
-        Introduction
-        -------------
-        
-        SQLAlchemy is the Python SQL toolkit and Object Relational Mapper
-        that gives application developers the full power and
-        flexibility of SQL. SQLAlchemy provides a full suite
-        of well known enterprise-level persistence patterns,
-        designed for efficient and high-performing database
-        access, adapted into a simple and Pythonic domain
-        language.
+The Python SQL Toolkit and Object Relational Mapper
+Introduction
+-------------
+
+%package license
+Summary: license components for the SQLAlchemy package.
+Group: Default
+
+%description license
+license components for the SQLAlchemy package.
+
 
 %package python
 Summary: python components for the SQLAlchemy package.
@@ -67,15 +65,16 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.13
-cd %{_builddir}/SQLAlchemy-1.3.13
+%setup -q -n SQLAlchemy-1.3.14
+cd %{_builddir}/SQLAlchemy-1.3.14
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583523441
+export SOURCE_DATE_EPOCH=1583869670
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -92,6 +91,8 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
+cp %{_builddir}/SQLAlchemy-1.3.14/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/d6b75b77c75c0b3e07fa4f58c9fa39953ba95ba3
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -99,6 +100,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/SQLAlchemy/d6b75b77c75c0b3e07fa4f58c9fa39953ba95ba3
 
 %files python
 %defattr(-,root,root,-)

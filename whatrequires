@@ -13,6 +13,7 @@ kombu
 neutron
 neutron-lib
 nova
+oslo.db
 performance
 sahara
 sqlalchemy-migrate
