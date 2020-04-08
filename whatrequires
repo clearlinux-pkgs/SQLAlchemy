@@ -1,9 +1,8 @@
 # This file contains recursive sources that require this package
 SQLAlchemy-Utils
 alembic
-barbican
 cinder
-glance
+fangfrisch
 heat
 home-assistant
 ipython-sql
@@ -12,10 +11,8 @@ keystone
 kombu
 neutron
 neutron-lib
-nova
 oslo.db
 performance
-sahara
 sqlalchemy-migrate
 subunit2sql
 taskflow
