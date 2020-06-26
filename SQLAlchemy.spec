@@ -6,7 +6,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.3.18
-Release  : 90
+Release  : 91
 URL      : https://files.pythonhosted.org/packages/02/80/c83986fceeed04f7d42e3fd8a67e94e87b56afb223ee653e8a4a8986361e/SQLAlchemy-1.3.18.tar.gz
 Source0  : https://files.pythonhosted.org/packages/02/80/c83986fceeed04f7d42e3fd8a67e94e87b56afb223ee653e8a4a8986361e/SQLAlchemy-1.3.18.tar.gz
 Source1  : https://files.pythonhosted.org/packages/02/80/c83986fceeed04f7d42e3fd8a67e94e87b56afb223ee653e8a4a8986361e/SQLAlchemy-1.3.18.tar.gz.asc
@@ -67,6 +67,7 @@ python components for the SQLAlchemy package.
 Summary: python3 components for the SQLAlchemy package.
 Group: Default
 Requires: python3-core
+Provides: pypi(sqlalchemy)
 
 %description python3
 python3 components for the SQLAlchemy package.
@@ -81,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1593190173
+export SOURCE_DATE_EPOCH=1593192236
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
