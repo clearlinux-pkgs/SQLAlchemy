@@ -1,17 +1,3 @@
 # This file contains recursive sources that require this package
-SQLAlchemy-Utils
-alembic
-cinder
-fangfrisch
 home-assistant
 ipython-sql
-ironic
-keystone
-kombu
-neutron
-neutron-lib
-oslo.db
-performance
-sqlalchemy-migrate
-subunit2sql
-taskflow
