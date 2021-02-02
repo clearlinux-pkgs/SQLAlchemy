@@ -5,15 +5,14 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.3.22
-Release  : 100
-URL      : https://files.pythonhosted.org/packages/b7/10/b6d02efa2cb10dca0671fd62c9091c1e49831b266658fd7a056c577621cb/SQLAlchemy-1.3.22.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b7/10/b6d02efa2cb10dca0671fd62c9091c1e49831b266658fd7a056c577621cb/SQLAlchemy-1.3.22.tar.gz
-Source1  : https://files.pythonhosted.org/packages/b7/10/b6d02efa2cb10dca0671fd62c9091c1e49831b266658fd7a056c577621cb/SQLAlchemy-1.3.22.tar.gz.asc
+Version  : 1.3.23
+Release  : 101
+URL      : https://files.pythonhosted.org/packages/ac/cd/f871773f1c1eb043f639b6751d6342539a45da0836bfede6a6889cea5255/SQLAlchemy-1.3.23.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ac/cd/f871773f1c1eb043f639b6751d6342539a45da0836bfede6a6889cea5255/SQLAlchemy-1.3.23.tar.gz
+Source1  : https://files.pythonhosted.org/packages/ac/cd/f871773f1c1eb043f639b6751d6342539a45da0836bfede6a6889cea5255/SQLAlchemy-1.3.23.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
-Requires: SQLAlchemy-license = %{version}-%{release}
 Requires: SQLAlchemy-python = %{version}-%{release}
 Requires: SQLAlchemy-python3 = %{version}-%{release}
 Requires: psycopg2
@@ -32,14 +31,6 @@ BuildRequires : virtualenv
 ==========
         
         |PyPI| |Python| |Downloads|
-
-%package license
-Summary: license components for the SQLAlchemy package.
-Group: Default
-
-%description license
-license components for the SQLAlchemy package.
-
 
 %package python
 Summary: python components for the SQLAlchemy package.
@@ -62,15 +53,15 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.3.22
-cd %{_builddir}/SQLAlchemy-1.3.22
+%setup -q -n SQLAlchemy-1.3.23
+cd %{_builddir}/SQLAlchemy-1.3.23
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609283019
+export SOURCE_DATE_EPOCH=1612228030
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -87,8 +78,6 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
-cp %{_builddir}/SQLAlchemy-1.3.22/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/d6b75b77c75c0b3e07fa4f58c9fa39953ba95ba3
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -96,10 +85,6 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/SQLAlchemy/d6b75b77c75c0b3e07fa4f58c9fa39953ba95ba3
 
 %files python
 %defattr(-,root,root,-)
