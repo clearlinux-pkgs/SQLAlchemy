@@ -1,5 +1,5 @@
 PKG_NAME := SQLAlchemy
-URL = https://files.pythonhosted.org/packages/24/5f/b65c7a8216ee84a2f3a42db8876ee0fa4925529cde4c7f4bb4a60e106e6d/SQLAlchemy-1.4.13.tar.gz
+URL = https://files.pythonhosted.org/packages/07/59/982b812faae46237f59cc37c88ea61c2000e23cbc736928483bff1738568/SQLAlchemy-1.4.14.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
