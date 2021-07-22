@@ -6,7 +6,7 @@
 #
 Name     : SQLAlchemy
 Version  : 1.4.21
-Release  : 127
+Release  : 128
 URL      : https://files.pythonhosted.org/packages/5b/93/1f25d619c8b9a473905627873e790b723faf083216531ec101cf8414cfe7/SQLAlchemy-1.4.21.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5b/93/1f25d619c8b9a473905627873e790b723faf083216531ec101cf8414cfe7/SQLAlchemy-1.4.21.tar.gz
 Source1  : https://files.pythonhosted.org/packages/5b/93/1f25d619c8b9a473905627873e790b723faf083216531ec101cf8414cfe7/SQLAlchemy-1.4.21.tar.gz.asc
