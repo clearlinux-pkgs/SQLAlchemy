@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.4.23
-Release  : 130
-URL      : https://files.pythonhosted.org/packages/ad/c7/61ff52be84f5ac86c72672ceac941981f1685b4ef90391d405a1f89677d0/SQLAlchemy-1.4.23.tar.gz
-Source0  : https://files.pythonhosted.org/packages/ad/c7/61ff52be84f5ac86c72672ceac941981f1685b4ef90391d405a1f89677d0/SQLAlchemy-1.4.23.tar.gz
-Source1  : https://files.pythonhosted.org/packages/ad/c7/61ff52be84f5ac86c72672ceac941981f1685b4ef90391d405a1f89677d0/SQLAlchemy-1.4.23.tar.gz.asc
+Version  : 1.4.24
+Release  : 131
+URL      : https://files.pythonhosted.org/packages/a3/2d/0f9afadc9c8985ecfb32b20933f13f5138771c01f5b6ab0e812b92259a60/SQLAlchemy-1.4.24.tar.gz
+Source0  : https://files.pythonhosted.org/packages/a3/2d/0f9afadc9c8985ecfb32b20933f13f5138771c01f5b6ab0e812b92259a60/SQLAlchemy-1.4.24.tar.gz
+Source1  : https://files.pythonhosted.org/packages/a3/2d/0f9afadc9c8985ecfb32b20933f13f5138771c01f5b6ab0e812b92259a60/SQLAlchemy-1.4.24.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
@@ -20,6 +20,7 @@ Requires: greenlet
 Requires: mariadb
 Requires: mypy
 Requires: psycopg2
+Requires: typing_extensions
 BuildRequires : buildreq-distutils3
 BuildRequires : greenlet
 BuildRequires : mariadb
@@ -70,15 +71,15 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.4.23
-cd %{_builddir}/SQLAlchemy-1.4.23
+%setup -q -n SQLAlchemy-1.4.24
+cd %{_builddir}/SQLAlchemy-1.4.24
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629335164
+export SOURCE_DATE_EPOCH=1632346522
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -91,7 +92,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
-cp %{_builddir}/SQLAlchemy-1.4.23/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/eefb00d4476c9b701ca0d16d96de0df3cac2c35a
+cp %{_builddir}/SQLAlchemy-1.4.24/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/eefb00d4476c9b701ca0d16d96de0df3cac2c35a
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
