@@ -5,29 +5,20 @@
 # Source0 file verified with key 0x330239C1C4DAFEE1 (classic@zzzcomputing.com)
 #
 Name     : SQLAlchemy
-Version  : 1.4.27
-Release  : 137
-URL      : https://files.pythonhosted.org/packages/16/d6/5ca70d8ab5bc99087524fbf0b7e3cd8c19ce61ad7df27c522141a0670413/SQLAlchemy-1.4.27.tar.gz
-Source0  : https://files.pythonhosted.org/packages/16/d6/5ca70d8ab5bc99087524fbf0b7e3cd8c19ce61ad7df27c522141a0670413/SQLAlchemy-1.4.27.tar.gz
-Source1  : https://files.pythonhosted.org/packages/16/d6/5ca70d8ab5bc99087524fbf0b7e3cd8c19ce61ad7df27c522141a0670413/SQLAlchemy-1.4.27.tar.gz.asc
+Version  : 1.4.28
+Release  : 138
+URL      : https://files.pythonhosted.org/packages/e2/73/b98fe9e8b54cd331d951fde982797a62f579c442fdcd24eabafba64e170f/SQLAlchemy-1.4.28.tar.gz
+Source0  : https://files.pythonhosted.org/packages/e2/73/b98fe9e8b54cd331d951fde982797a62f579c442fdcd24eabafba64e170f/SQLAlchemy-1.4.28.tar.gz
+Source1  : https://files.pythonhosted.org/packages/e2/73/b98fe9e8b54cd331d951fde982797a62f579c442fdcd24eabafba64e170f/SQLAlchemy-1.4.28.tar.gz.asc
 Summary  : Database Abstraction Library
 Group    : Development/Tools
 License  : MIT
 Requires: SQLAlchemy-license = %{version}-%{release}
 Requires: SQLAlchemy-python = %{version}-%{release}
 Requires: SQLAlchemy-python3 = %{version}-%{release}
-Requires: greenlet
-Requires: mariadb
-Requires: mypy
-Requires: psycopg2
-Requires: typing_extensions
 BuildRequires : buildreq-distutils3
-BuildRequires : greenlet
-BuildRequires : mariadb
-BuildRequires : mypy
 BuildRequires : nose
 BuildRequires : pluggy
-BuildRequires : psycopg2
 BuildRequires : py-python
 BuildRequires : pytest
 BuildRequires : python-mock
@@ -71,15 +62,15 @@ python3 components for the SQLAlchemy package.
 
 
 %prep
-%setup -q -n SQLAlchemy-1.4.27
-cd %{_builddir}/SQLAlchemy-1.4.27
+%setup -q -n SQLAlchemy-1.4.28
+cd %{_builddir}/SQLAlchemy-1.4.28
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1636657380
+export SOURCE_DATE_EPOCH=1639425874
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -92,7 +83,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/SQLAlchemy
-cp %{_builddir}/SQLAlchemy-1.4.27/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/eefb00d4476c9b701ca0d16d96de0df3cac2c35a
+cp %{_builddir}/SQLAlchemy-1.4.28/LICENSE %{buildroot}/usr/share/package-licenses/SQLAlchemy/eefb00d4476c9b701ca0d16d96de0df3cac2c35a
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
